@@ -260,7 +260,7 @@ static void WriteChar(uint8_t *buf, int16_t x, int16_t y, uint8_t ch) {
     }
 }
 
-static void WriteString(uint8_t *buf, int16_t x, int16_t y, char *str) {
+void WriteString(uint8_t *buf, int16_t x, int16_t y, char *str) {
     // Cull out any string off the screen
     if (x > SSD1306_WIDTH - 8 || y > SSD1306_HEIGHT - 8)
         return;

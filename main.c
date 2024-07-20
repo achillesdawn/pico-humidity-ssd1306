@@ -96,19 +96,19 @@ int main() {
     calc_render_area_buflen(&frame_area);
 
     uint8_t buf[SSD1306_BUF_LEN];
+    memset(buf, 0, SSD1306_BUF_LEN);
+    render(buf, &frame_area);
+
+    char display_row[SSD1306_WIDTH -1];
+
 
     while (true) {
         uint16_t value = adc_read();
         float mapped = map_within(RANGE_MIN, RANGE_MAX, value);
-        printf("%.0f %% humidity\n", mapped);
-
-        for (int i = 0; i < 3; i++) {
-            SSD1306_send_cmd(SSD1306_SET_ALL_ON); // Set all pixels on
-            sleep_ms(500);
-            SSD1306_send_cmd(SSD1306_SET_ENTIRE_ON
-            ); // go back to following RAM for pixel state
-            sleep_ms(500);
-        }
+        // printf("%.0f %% humidity\n", mapped);
+        sprintf(display_row, "%.0f %% umidade", mapped);
+        WriteString(buf, 0, 8, display_row);
+        render(buf, &frame_area);
         sleep_ms(1000);
     }
 }

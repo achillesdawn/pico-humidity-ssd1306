@@ -63,6 +63,6 @@ void SSD1306_init();
 void SSD1306_send_cmd(uint8_t cmd);
 void render(uint8_t *buf, RenderArea *area);
 
-static void WriteString(uint8_t *buf, int16_t x, int16_t y, char *str);
+void WriteString(uint8_t *buf, int16_t x, int16_t y, char *str);
 
 #pragma once
