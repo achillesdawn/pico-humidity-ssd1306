@@ -16,6 +16,7 @@ pico_sdk_init()
 
 add_executable(${CMAKE_PROJECT_NAME}
     main.c
+    ssd1306_i2c.c
 )
 
 pico_enable_stdio_usb(${CMAKE_PROJECT_NAME} 1)
