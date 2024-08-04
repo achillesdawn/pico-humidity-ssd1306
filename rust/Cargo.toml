@@ -1,0 +1,21 @@
+[package]
+name = "rust_interop"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cty = "0.2.2"
+heapless = "0.8.0"
+
+[build-dependencies]
+cbindgen = "0.26.0"
+
+[profile.release]
+panic = "abort"
+# # ensure optimizations are enabled, and debug info is stripped
+# opt-level = 3
+# debug = false
+
+[lib]
+name = "rust_interop"
+crate-type = ["staticlib"] # Creates static lib
